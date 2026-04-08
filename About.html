@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Profile </title>
+        <style>
+            @font-face {
+                    font-family: 'Starborn'; 
+                    src: url(Starborn.ttf) format('truetype');
+            }
+            @font-face {
+                    font-family: 'Your-Star' ; 
+                    src: url(Your-Star.ttf);
+            }
+            @font-face {
+                    font-family: 'Shooting-Star' ; 
+                    src: url(Shooting-Star.ttf) ;
+            }
+            body{
+                    background-image: url("Blue_pink.jpeg");
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+                }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .page-container {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                width: 100%;
+            }
+            .header {
+                text-align: center;
+                margin: 30px auto 20px auto;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 0 20px;
+            }
+        
+            .smooth-box {
+                position: fixed;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                min-width: 320px;
+                height: auto;
+                border-radius: 60px;
+                background: linear-gradient(135deg, #5f99bd 0%, #4a7ea0 100%);
+                border: 3px solid #dcecff;
+                padding: 16px 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+            .smooth-box:hover {
+                transform: translateX(-50%) scale(1.02);
+                border-color: #ffdefd;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            }
+            
+            .float {
+                display: flex;
+                gap: 80px;
+                font-family: 'Starborn', sans-serif;
+                text-decoration: none;
+                color: white;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .float h1 {
+                margin: 0;
+                line-height: 1;
+            }
+            
+            .float a {
+                font-family: 'Starborn', sans-serif;
+                text-decoration: none;
+                color: rgb(201, 219, 254);
+                font-size: 1.8rem;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+                display: inline-block;
+                position: relative;
+            }
+            .float a.active {
+                color: #ffffff;
+                text-shadow: 0 0 8px #ffdefd, 0 0 3px rgba(255,255,255,0.8);
+                font-weight: bold;
+            }
+            .float a:hover {
+                color: #32e3e3;
+                text-shadow: 0 0 12px #32e3e3;
+                transform: translateY(-2px);
+            }
+            h1{
+                color: white
+
+            }
+            h2{
+                color: white
+            }
+            h3{
+                color: white
+            }
+            h4{
+                color: white
+            }
+            h5{
+                color: white
+            }
+            h6{
+                color: white
+            }
+            img {
+                    max-width: 200%;
+                    height: auto;
+                    align-items: center;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+            }
+            a:link {
+                        color: #c7e9ff;
+                        text-align: center;
+                        text-decoration: none;
+            }
+            a:visited {
+                color: #c7e9ff;
+            }
+            a:hover {
+                color: #ffdefd;
+            }
+            .float {
+                display: flex;
+                gap: 100px;
+                font-family: 'Starborn';
+                text-decoration: none;
+                color: white;
+            }
+            .float a.active {color: #ffffff;}
+            .main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 100px;
+                height: 100vh;
+                padding-top: 140px;
+            }
+            .navigation {
+                    text-align: center;
+                    padding: 40px 0 20px 0;
+            }
+            .navigation a {
+                color: white;
+                text-decoration: none;
+                font-size: 24px;
+                margin: 0 30px;
+                transition: 0.3s;
+            }
+            .navigation a:hover {
+                color: #66d8ea;
+            }
+            .gal {
+                position: absolute;
+                bottom: 20%;
+                width: 100%;
+            }
+            .main-content {
+                padding-top: 140px;
+                padding-bottom: 100px;
+            }
+            .cards {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: 40px;
+                list-style: none;
+                margin: 0 auto;
+                max-width: 1400px;
+                padding: 0 20px;
+            }
+            .card {
+                width: 280px;
+                background: rgba(66, 126, 187, 0.95);
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+                transition: all 0.4s ease;
+                border: 3px solid #dcecff;
+            }
+            .card:hover {
+                transform: translateY(-20px) scale(1.05);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            }
+            .card img {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+                display: block;
+            }
+            .card-content {
+                padding: 20px;
+                text-align: center;
+            }
+            .card-content h3 {
+                margin: 10px 0 8px 0;
+                font-size: 24px;
+                color: white;
+                font-family: "Starborn";
+            }
+            .card-content p {
+                margin: 0;
+                font-size: 15px;
+                font-family: "Your-Star";
+                color: #c7e9ff;
+                line-height: 1.5;
+                opacity: 0.9;
+            }
+            .ABout-Me-con {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 100px auto 40px auto;
+                padding: 0 20px;
+            }
+            .about-me-box {
+                background: rgba(95, 153, 189, 0.85);
+                backdrop-filter: blur(12px);
+                border-radius: 40px;
+                padding: 40px 50px;
+                max-width: 800px;
+                width: 90%;
+                border: 3px solid #dcecff;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                transition: all 0.4s ease;
+                text-align: center;
+                animation: fadeInUp 0.8s ease-out;
+            }
+            @keyframes fadeInUp {
+                from {opacity: 0; transform: translateY(30px);}
+                to {opacity: 1; transform: translateY(0);}
+            }
+            .about-me-box:hover {
+                transform: translateY(-8px);
+                border-color: #ffdefd;
+                box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+                background: rgba(95, 153, 189, 0.95);
+            }
+            .about-me-box h2 {
+                font-family: 'Starborn', cursive;
+                font-size: 2.5rem;
+                color: white;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+                margin-bottom: 20px;
+                letter-spacing: 2px;
+            }
+            .about-me-box p {
+                font-family: 'Segoe UI', system-ui, sans-serif;
+                font-size: 1.15rem;
+                line-height: 1.8;
+                color: #f0f4fa;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+                margin-bottom: 15px;
+            }
+            .about-me-box .signature {
+                font-family: 'Your-Star', cursive;
+                font-size: 1.3rem;
+                color: #ffdefd;
+                margin-top: 20px;
+                display: inline-block;
+                border-top: 2px solid rgba(220, 236, 255, 0.6);
+                padding-top: 15px;
+            }
+            audio {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 999;
+                padding: 5px;
+                transition: all 0.3s ease;
+                border-radius: 30px;
+                background: rgba(0,0,0,0.3);
+                backdrop-filter: blur(4px);
+            }
+            @media (max-width: 700px) {
+                .about-me-box {
+                    padding: 25px 30px;
+                }
+                .about-me-box h2 {
+                    font-size: 1.8rem;
+                }
+                .about-me-box p {
+                    font-size: 0.95rem;
+                }
+                .about-me-box .signature {
+                    font-size: 1rem;
+                }
+                .float {
+                    gap: 35px;
+                }
+                .float a {
+                    font-size: 1.3rem;
+                }
+                .smooth-box {
+                    padding: 10px 20px;
+                    min-width: 260px;
+                }
+                .main-content {
+                    padding-top: 100px;
+                }
+            }
+            @media (max-width: 480px) {
+                .float {
+                    gap: 25px;
+                }
+                .float a {
+                    font-size: 1.1rem;
+                }
+                .smooth-box {
+                    padding: 8px 16px;
+                    border-radius: 40px;
+                }
+                .about-me-box {
+                    padding: 20px 20px;
+                }
+                .about-me-box h2 {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+    </head>
+
+
+<body>
+        <div class="smooth-box">
+            <div class="float">
+                <h1><a href="Index.html"> HOME </a></h1>
+                <h1><a href="About.html" class= "active">ABOUT ME</a></h1>
+            </div>
+        </div> 
+
+        <audio controls>
+            <source src="Music.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- About Me Box -->
+        <div class="ABout-Me-con">
+            <div class="about-me-box">
+                <h2>✧ About Me ✧</h2>
+                <p>Hello Fellow Developers! (☞ﾟヮﾟ)☞ This is Mariam, I am 17 year old Developer from Egypt, A STEM Student. learning data science, with websites development as a side quest.</p>
+                <p>When I'm not designing websites or Studying, you can find me exploring new music, Making new OCs, diving into Anime and series. Or Drawing a Stickman in the corner of the room =￣ω￣= </p>
+                <span class="signature">☆ stay curious, stay creative ☆</span>
+            </div>
+        </div>
+
+        <div class="ABout-Me-con">
+            <div class="about-me-box">
+                <h2>✧My Interests✧</h2>
+            </div>
+        </div>
+
+        <div class="main-content">
+        <ul class="cards">
+            <li class="card">
+                <img src="Posters/TADC.jfif" alt="Image 1">
+                <div class="card-content">
+                    <h3>The Amazing Digital Circus</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/death-note.jpg" alt="Image 2">
+                <div class="card-content">
+                    <h3>Death Note</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/Dr.Stone.jpg" alt="Image 3">
+                <div class="card-content">
+                    <h3>Dr. Stone</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/SpyxFamily.jpg" alt="Image 4">
+                <div class="card-content">
+                    <h3>Spy x Family</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/Murder Drones.jpg" alt="Image 5">
+                <div class="card-content">
+                    <h3>Murder Drones</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/AC.jfif" alt="Image 6">
+                <div class="card-content">
+                    <h3>Assassination Classroom</h3>              
+                </div>
+            </li>
+            <li class="card">
+                <img src="Posters/HunterxHunter.jfif" alt="Image 7">
+                <div class="card-content">
+                    <h3>Hunter x Hunter</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/KNY.jfif" alt="Image 8">
+                <div class="card-content">
+                    <h3>Kimetsu no Yaiba</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/Neverland.jfif" alt="Image 9">
+                <div class="card-content">
+                    <h3>The Promised Neverland</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/TBHK.jfif" alt="Image 10">
+                <div class="card-content">
+                    <h3>Toilet Bound Hanako Kun</h3>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/Oshi-no-ko.jpg" alt="Image 11">
+                <div class="card-content">
+                    <h3>Oshi No Ko</h3>               
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/danganronpa.jfif" alt="Image 12">
+                <div class="card-content">
+                    <h3>Danganronpa</h3>         
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="ABout-Me-con">
+            <div class="about-me-box">
+                <h2>✧Hobbies✧</h2>
+            </div>
+        </div>
+
+    <div class="main-content">
+        <ul class="cards">
+            <li class="card">
+                <img src="images.png" alt="Image 1">
+                <div class="card-content">
+                    <h3>Listening to Indie Music</h3>
+                    <p>or any music in general as long it is not italian brainrot (. ❛ ᴗ ❛.) </p>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Ibis.png" alt="Image 2">
+                <div class="card-content">
+                    <h3>Painting on Ibis Paint</h3>
+                    <p>Yes, On the free version, drawing with a finger and a broken phone (。﹏。*)</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="OC.jpeg" alt="Image 3">
+                <div class="card-content">
+                    <h3>Making OCs</h3>
+                    <p>I always have those creativy blocks that suddenly spark into a muse at 4AM, So was this Website btw (Yes, The IMG is my oc)</p>
+                </div>
+            </li>
+
+            <li class="card">
+                <img src="Posters/SpyxFamily.jpg" alt="Image 4">
+                <div class="card-content">
+                    <h3>Watching Anime and Animations</h3>
+                    <p> I am currently watching the Amazing digital circus and Murder drones</p>
+                </div>
+            </li>
+            <li class="card">
+                <img src="Minecraft.jpg" alt="Image 4">
+                <div class="card-content">
+                    <h3>Gaming</h3>
+                    <p> Not often, But My favourites Games to blow some steam after a long way are FNF and Minecraft (on creative mode) ╰（‵□′）╯</p>
+        </ul>
+    </div>
+</body>
+</html>
